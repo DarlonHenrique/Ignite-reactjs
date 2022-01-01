@@ -10,6 +10,10 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx']
   },
+  devServer: {
+    static: path.resolve(__dirname, 'public')
+  },
+  devtool: 'eval-source-map',
   plugins: [
     new htmlWebpackPlugin({
       template: path.resolve(__dirname, 'public', 'index.html')
