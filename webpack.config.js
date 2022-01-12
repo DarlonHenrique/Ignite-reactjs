@@ -1,7 +1,9 @@
 const path = require('path')
 const htmlWebpackPlugin = require('html-webpack-plugin')
+const isDevelopment = process.env.NODE_ENV !== 'development'
 
 module.exports = {
+  mode: isDevelopment ? 'development' : 'production',
   entry: path.resolve(__dirname, 'src', 'index.jsx'),
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -13,7 +15,7 @@ module.exports = {
   devServer: {
     static: path.resolve(__dirname, 'public')
   },
-  devtool: 'eval-source-map',
+  devtool: isDevelopment ? 'eval-source-map' : 'source-map',
   plugins: [
     new htmlWebpackPlugin({
       template: path.resolve(__dirname, 'public', 'index.html')
@@ -29,6 +31,5 @@ module.exports = {
         }
       }
     ]
-  },
-  mode: 'development'
+  }
 }
