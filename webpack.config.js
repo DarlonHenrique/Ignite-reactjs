@@ -24,10 +24,19 @@ module.exports = {
   module: {
     rules: [
       {
+        // loader for jsx
         test: /\.jsx$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader'
+        }
+      },
+      {
+        // loader for css
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: {
+          loader: ['style-loader', 'css-loader']
         }
       }
     ]
